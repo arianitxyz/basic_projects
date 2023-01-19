@@ -1,10 +1,14 @@
 import requests
 from bs4 import BeautifulSoup as bs
 
-github_user = input('Please input GitHub user: ')
 
-url = 'https://github.com/' + github_user
-r = requests.get(url)
-soup = bs(r.content, 'html.parser')
-profile_image = soup.find('img', {'alt': 'Avatar'})['src']
-print(profile_image)
+def get_user_profile(username: str) -> str:
+    # username = input('Please input GitHub user: ')
+
+    url = 'https://github.com/' + username
+    r = requests.get(url)
+    soup = bs(r.content, 'html.parser')
+    profile_image = soup.find('img', {'alt': 'Avatar'})['src']
+    print(profile_image)
+    return profile_image
+
