@@ -9,6 +9,4 @@ def get_user_profile(username: str) -> str:
     r = requests.get(url)
     soup = bs(r.content, 'html.parser')
     profile_image = soup.find('img', {'alt': 'Avatar'})['src']
-    print(profile_image)
     return profile_image
-
